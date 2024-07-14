@@ -19,17 +19,19 @@ div{
 button{
   height: 100px;
   width: 100px;
-  font-size: 30px;
+  font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .numbers{
   display: flex;
-  width: 310px;
-  height: 500px;
+  width: 330px;
+  height: fit-content;
   flex-wrap: wrap;
   flex-direction: row-reverse;
   align-content: flex-start;
@@ -38,9 +40,19 @@ button{
 
 .operations{
   width: fit-content
+} .operations button{
+  background-color: orange;
 }
 
 .buttons{
   display: flex;
   width: fit-content;
+}
+
+.misc button{
+  background-color: darkred;
+  color: white;
+}
+#equal{
+  background: darkseagreen;
 }
