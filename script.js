@@ -22,7 +22,7 @@ function subtract(...numbers){
 }
 
 function multiply(...numbers){
-  result = arguments[0] * arguments[1];
+  result = Number(arguments[0]) * Number(arguments[1]);
   return result
 }
 
@@ -76,10 +76,11 @@ function defineNumPressed(e){
   if (operation == ""){
     firstNum += Number(e.key)
     display.textContent = firstNum
-  } else{
+  }
+  else{
     secondNum += Number(e.key)
     display.textContent = secondNum
-  }
+  } 
 }
 
 function defineOperationPressed(e){
@@ -92,7 +93,12 @@ numberPad.forEach((number) => {
     if (operation == ""){
       firstNum += Number(number.textContent)
       display.textContent = firstNum
-    } else{
+    } else if (secondNum !== 0){
+      firstNum = secondNum
+      secondNum = 0
+      secondNum += Number(number.textContent)
+      display.textContent = secondNum
+    } else {
       secondNum += Number(number.textContent)
       display.textContent = secondNum
     }
@@ -124,11 +130,12 @@ equal.addEventListener("click", () => {
       break;
     }
   if (isNaN(result)){
-    display.textContent = "Who invited this kid?"
     toZero()
+    display.textContent = "Who invited this kid?"
   } else{
-    display.textContent = Math.round(result * 10)/10
     secondNum = result
+    secondNum = Math.round(secondNum * 10)/10
+    display.textContent = secondNum
   }
 })
 
