@@ -9,9 +9,6 @@ const operationPad = document.querySelector(".operations").childNodes
 const equal = document.getElementById("equal")
 
 
-function toNum(number){
-  return number = + number
-}
 
 // Takes 2 arguments from the user input and adds them
 function add(...numbers){
@@ -77,12 +74,10 @@ function keyDown(e){
 
 function defineNumPressed(e){
   if (operation == ""){
-    firstNum += e.key
-    firstNum = Number(firstNum)
+    firstNum += Number(e.key)
     display.textContent = firstNum
   } else{
-    secondNum += e.key
-    secondNum = Number(secondNum)
+    secondNum += Number(e.key)
     display.textContent = secondNum
   }
 }
@@ -95,12 +90,10 @@ function defineOperationPressed(e){
 numberPad.forEach((number) => {
   number.addEventListener("click", () => {
     if (operation == ""){
-      firstNum += number.textContent
-      firstNum = toNum(firstNum)
+      firstNum += Number(number.textContent)
       display.textContent = firstNum
     } else{
-      secondNum += number.textContent
-      secondNum = toNum(secondNum)
+      secondNum += Number(number.textContent)
       display.textContent = secondNum
     }
   })
@@ -114,6 +107,7 @@ operationPad.forEach((button) => {
   })
 })
 
+// Operations to do when the equal key is pressed
 equal.addEventListener("click", () => {
   switch(operation){
     case "add":
@@ -134,7 +128,7 @@ equal.addEventListener("click", () => {
     toZero()
   } else{
     display.textContent = Math.round(result * 10)/10
-    firstNum = result
+    secondNum = result
   }
 })
 
