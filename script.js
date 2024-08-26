@@ -67,21 +67,21 @@ function keyDown(e){
     case 103:
     case 104:
     case 105:
-      defineNumPressed(e)
+      // defineNumPressed(e)
       break;
   }
 }
 
-function defineNumPressed(e){
-  if (operation == ""){
-    firstNum += Number(e.key)
-    display.textContent = firstNum
-  }
-  else{
-    secondNum += Number(e.key)
-    display.textContent = secondNum
-  } 
-}
+// function defineNumPressed(e){
+//   if (operation == ""){
+//     firstNum += Number(e.key)
+//     display.textContent = firstNum
+//   }
+//   else{
+//     secondNum += Number(e.key)
+//     display.textContent = secondNum
+//   } 
+// }
 
 function defineOperationPressed(e){
   operation = e.key
@@ -91,15 +91,18 @@ function defineOperationPressed(e){
 numberPad.forEach((number) => {
   number.addEventListener("click", () => {
     if (operation == ""){
-      firstNum += Number(number.textContent)
+      firstNum += number.textContent
+      firstNum = Number(firstNum)
       display.textContent = firstNum
     } else if (secondNum !== 0){
       firstNum = secondNum
       secondNum = 0
-      secondNum += Number(number.textContent)
+      secondNum += number.textContent
+      secondNum = Number(secondNum)
       display.textContent = secondNum
     } else {
-      secondNum += Number(number.textContent)
+      secondNum = number.textContent
+      secondNum = Number(secondNum)
       display.textContent = secondNum
     }
   })
@@ -134,7 +137,7 @@ equal.addEventListener("click", () => {
     display.textContent = "Who invited this kid?"
   } else{
     secondNum = result
-    secondNum = Math.round(secondNum * 10)/10
+    secondNum = Math.round(secondNum * 10) / 10
     display.textContent = secondNum
   }
 })
